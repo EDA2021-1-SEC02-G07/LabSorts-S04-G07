@@ -1,5 +1,5 @@
 """
- * Copyright 2020, Departamento de sistemas y Computación,
+ * Copyright 2020, Departamento de sistemas y ComputaciÃ³n,
  * Universidad de Los Andes
  *
  *
@@ -32,9 +32,9 @@ from DISClib.Algorithms.Sorting import shellsort as sa
 assert cf
 
 """
-Se define la estructura de un catálogo de libros.
-El catálogo tendrá tres listas, una para libros, otra para autores
-y otra para géneros
+Se define la estructura de un catÃ¡logo de libros.
+El catÃ¡logo tendrÃ¡ tres listas, una para libros, otra para autores
+y otra para gÃ©neros
 """
 
 # Construccion de modelos
@@ -42,9 +42,9 @@ y otra para géneros
 
 def newCatalog():
     """
-    Inicializa el catálogo de libros. Crea una lista vacia para guardar
+    Inicializa el catÃ¡logo de libros. Crea una lista vacia para guardar
     todos los libros, adicionalmente, crea una lista vacia para los autores,
-    una lista vacia para los generos y una lista vacia para la asociación
+    una lista vacia para los generos y una lista vacia para la asociaciÃ³n
     generos y libros. Retorna el catalogo inicializado.
     """
     catalog = {'books': None,
@@ -131,7 +131,7 @@ def newTag(name, id):
 
 def newBookTag(tag_id, book_id):
     """
-    Esta estructura crea una relación entre un tag y
+    Esta estructura crea una relaciÃ³n entre un tag y
     los libros que han sido marcados con dicho tag.
     """
     booktag = {'tag_id': tag_id, 'book_id': book_id}
@@ -188,7 +188,8 @@ def compareauthors(authorname1, author):
 
 
 def compareratings(book1, book2):
-    return (float(book1['average_rating']) > float(book2['average_rating']))
+    return (float(book1['average_rating']) < float(book2['average_rating']))
+
 
 
 def comparetagnames(name, tag):
@@ -201,7 +202,9 @@ def sortBooks(catalog, size):
     sub_list = lt.subList(catalog['books'], 0, size)
     sub_list = sub_list.copy()
     start_time = time.process_time()
-    sa.sort(sub_list, compareratings)
+    sorted_list = sa.sort(sub_list, compareratings)
     stop_time = time.process_time()
     elapsed_time_mseg = (stop_time - start_time)*1000
-    return elapsed_time_mseg
+    return elapsed_time_mseg, sorted_list
+
+
